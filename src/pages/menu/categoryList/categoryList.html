@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{companyName}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item-group *ngFor="let category of categories">
+    <ion-item-divider color="light">{{category.name}}</ion-item-divider>
+    <ion-item *ngFor="let product of category.products">
+      <h2>{{product.name}}</h2>
+      <h3>Preis: {{product.price}}</h3>
+      <p>{{product.description}}</p>
+    </ion-item>
+  </ion-item-group>
+</ion-content>
