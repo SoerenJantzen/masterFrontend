@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="appBackground">
+  <ion-card>
+    <ion-card-header>
+      Registrieren
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+
+        <ion-item>
+          <ion-label stacked>E-Mail</ion-label>
+          <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Benutzername</ion-label>
+          <ion-input type="text" [(ngModel)]="user.username"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Passwort</ion-label>
+          <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+        </ion-item>
+
+        <button ion-button full color="success" (click)="signup()">Anmelden</button>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

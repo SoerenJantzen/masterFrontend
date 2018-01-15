@@ -4,13 +4,18 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { HttpModule } from '@angular/http';
+import { AuthService } from '../providers/authService';
 
-import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { MapsPage } from '../pages/maps/maps';
 import { TabsPage } from '../pages/tabs/tabs';
 import { CompanyListPage } from '../pages/companyList/companyList';
 import { CategoryList } from '../pages/menu/categoryList/categoryList';
+import { LoginPage } from '../pages/login/login';
+import { SignupPage } from '../pages/signup/signup';
+import { CartPage } from '../pages/cart/cart';
+
+import { Cart } from '../providers/cart';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -18,12 +23,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
+    CartPage,
     ContactPage,
     MapsPage,
+    LoginPage,
     CompanyListPage,
     CategoryList,
-    TabsPage
+    TabsPage,
+    SignupPage
   ],
   imports: [
     BrowserModule,
@@ -33,17 +40,21 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
+    CartPage,
     ContactPage,
     MapsPage,
+    LoginPage,
     CompanyListPage,
     CategoryList,
-    TabsPage
+    TabsPage,
+    SignupPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     GoogleMaps,
+    AuthService,
+    Cart,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

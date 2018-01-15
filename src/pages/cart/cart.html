@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Warenkorb
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid *ngIf="cart.company && cart.company != null">
+    <!-- header - company -->
+    <ion-row>
+      <ion-col col-12>
+        <p>Bestellung für die Firma:</p>
+        <h6> {{cart.company.name}}</h6>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- products to order -->
+  <ion-item-group *ngIf="cart.products && cart.products != null && cart.products.length > 0">
+    <ion-item *ngFor="let productData of cart.products">
+      <ion-grid>
+        <ion-row> <!-- OUTER row -->
+          <ion-col col-11>
+            <ion-row> <!-- INNER row -->
+              <ion-col col-10>
+                <h2>{{productData.product.name}}</h2>
+              </ion-col>
+              <ion-col col2>
+                {{productData.count*productData.product.price}} €
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-10>
+                <p>{{productData.count}} x {{productData.product.price}} €</p>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col col-1>
+            <!-- Only icon (no text) -->
+            <button ion-button small icon-only (click)="addProduct(productData.product)">
+              <ion-icon name="arrow-up"></ion-icon>
+            </button>
+            <br>
+            <button ion-button small icon-only (click)="removeProduct(productData.product)">
+              <ion-icon name="arrow-down"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-item-group>
+</ion-content>
+

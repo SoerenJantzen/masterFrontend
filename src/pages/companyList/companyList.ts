@@ -13,6 +13,7 @@ export class CompanyListPage {
 
   companies: any;
   tabs:any;
+  cart = {"dueDatetime": "", "orderReceivedDatetime": "", "pickUpNumber": "", "companyId": "", "userId":"", "products": []};
 
   constructor(public navCtrl: NavController, public http: Http) {
 
@@ -30,9 +31,13 @@ export class CompanyListPage {
 
   	console.log("Company with id: " + company.id + " is selected.");
   	this.navCtrl.push(CategoryList, {
-      companyId: company.id,
-      companyName: company.name
+      company: company,
+      cart: this.cart
     });
+  }
+
+  logout() {
+  	console.log("LOGOUT");
   }
 
 }

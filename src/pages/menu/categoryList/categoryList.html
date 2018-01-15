@@ -1,15 +1,68 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>{{companyName}}</ion-title>
+    <ion-title>{{company.name}}</ion-title>
+    <ion-buttons end>
+      <button id="btnCart" ion-button icon-only>
+        <ion-icon name="cart">
+          <ion-badge style="position: absolute; right: 4px; top: -2px;" color="danger">{{cart.getProductsCount()}}</ion-badge>
+        </ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-item-group *ngFor="let category of categories">
+  <!-- Company Details -->
+  <div id="company-detail-container">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-12>
+          <ion-img width="100%" height="100px" src="../../assets/imgs/{{company.id}}_header.jpg"></ion-img>
+        </ion-col>
+      </ion-row>
+      <!-- cuisine -->
+      <ion-row>
+        <ion-col col-4>
+          Küchenrichtung
+        </ion-col>
+        <ion-col col-8>
+          
+        </ion-col>
+      </ion-row>
+      <!-- address - street -->
+      <ion-row>
+        <ion-col col-4>
+          Adresse
+        </ion-col>
+        <ion-col col-8>
+          {{company.address.street}}
+        </ion-col>
+      </ion-row>
+      <!-- address - zip, city -->
+      <ion-row>
+        <ion-col  offset-4>
+          {{company.address.zip}}, {{company.address.city}}
+        </ion-col>
+      </ion-row>
+      <!-- telefon -->
+      <ion-row>
+        <ion-col col-4>
+          Telefon
+        </ion-col>
+        <ion-col col-8>
+          030 123456
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+    <!-- telefon, adresse, website, öffnungszeiten, Küchenrichtung (Asiatisch, bla), Bewertung -->
+  </div>
+
+  <ion-item-group *ngFor="let category of company.categories">
     <ion-item-divider color="light">{{category.name}}</ion-item-divider>
-    <ion-item *ngFor="let product of category.products">
+    <ion-item *ngFor="let product of category.products" (click)="addToCart(product.id)">
       <h2>{{product.name}}</h2>
-      <h3>Preis: {{product.price}}</h3>
+      <h3>Preis: {{product.price}} €</h3>
       <p>{{product.description}}</p>
     </ion-item>
   </ion-item-group>

@@ -72,8 +72,7 @@ export class MapsPage {
 	  			 */
 	  			google.maps.event.addListener(marker, 'click', () => {
 				    tempNavCtrl.push(CategoryList, {
-				      companyId: company.id,
-				      companyName: company.name
+				      company:company
 				    });
 				});
   			}
@@ -82,5 +81,9 @@ export class MapsPage {
   			}
   		});
   	}
+  }
+
+  logout() {
+  	console.log("LOGOUT");
   }
 }
